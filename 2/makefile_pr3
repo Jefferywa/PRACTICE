@@ -1,0 +1,17 @@
+binary: main.o lib_files.a lib_func.so
+	g++ -o binary main.o -L. -lFileDB -Wl,-rpath,.
+
+main.o: main.cpp
+	g++ -c main.cpp
+
+lib_func.so: func.o
+	g++ -shared -o lib_func.so func.o
+
+func.o: func.cpp
+	g++ -c -fPIC func.cpp
+
+lib_files.a: files.o
+	ar cr lib_files.a files.o
+
+files.o: files.cpp
+	g++ -c files.cpp
