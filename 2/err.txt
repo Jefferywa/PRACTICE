@@ -1,0 +1,13 @@
+[files.h:4]: (information) Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[files.h:5]: (information) Include file: <fstream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[func.h:4]: (information) Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[func.h:5]: (information) Include file: <fstream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[func.h:6]: (information) Include file: <string> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[func.h:7]: (information) Include file: <limits> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:1]: (information) Include file: <stdio.h> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:2]: (information) Include file: <iostream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:3]: (information) Include file: <fstream> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:4]: (information) Include file: <stdlib.h> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:5]: (information) Include file: <limits> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:6]: (information) Include file: <ctime> not found. Please note: Cppcheck does not need standard library headers to get proper results.
+[main.cpp:7]: (information) Include file: <locale> not found. Please note: Cppcheck does not need standard library headers to get proper results.
