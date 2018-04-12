@@ -16,7 +16,7 @@ void sFile(internetStore *&first)
             int len;
             len = first->title.length();
 
-            out.write((char *)&len, sizeof(len));
+            out.write((char *)&len, sizeof(len)); //
             if (!out)
             {
                 flag = false;

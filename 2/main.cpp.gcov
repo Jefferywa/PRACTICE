@@ -1,0 +1,358 @@
+        -:    0:Source:main.cpp
+        -:    0:Programs:3
+        -:    1:#include <stdio.h>
+        -:    2:#include <iostream>
+        -:    3:#include <fstream>
+        -:    4:#include <stdlib.h>
+        -:    5:#include <limits>
+        -:    6:#include <ctime>
+        -:    7:#include <locale>
+        -:    8:#include "files.h"
+        -:    9:#include "func.h"
+        -:   10:
+        -:   11:using namespace std;
+        -:   12:
+        -:   13:/*struct internetStore
+        -:   14:{ 
+        -:   15:    internetStore *prev;
+        -:   16:    string title;
+        -:   17:    string desc; 
+        -:   18:    string price;
+        -:   19:    string category;
+        -:   20:    internetStore *next;
+        -:   21:};
+        -:   22:
+        -:   23:void sFile(internetStore *&first) 
+        -:   24:{
+        -:   25:    ofstream out("storage.txt");
+        -:   26:    if(out) {
+        -:   27:        internetStore *buf;
+        -:   28:        buf = first;
+        -:   29:        bool flag = true;
+        -:   30:        while (buf != NULL) {
+        -:   31:            int len;
+        -:   32:            len = first->title.length();
+        -:   33:
+        -:   34:            out.write((char*)&len, sizeof(len));
+        -:   35:            if(!out) {
+        -:   36:                flag = false;
+        -:   37:            }
+        -:   38:
+        -:   39:            if(flag)
+        -:   40:                out.write(buf->title.c_str(), len);
+        -:   41:            if(!out) {
+        -:   42:                flag = false;
+        -:   43:            }
+        -:   44:            
+        -:   45:            len = buf->desc.length();
+        -:   46:
+        -:   47:            if(flag)
+        -:   48:                out.write((char*)&len, sizeof(len));
+        -:   49:            if(!out) {
+        -:   50:                flag = false;
+        -:   51:            }
+        -:   52:
+        -:   53:            if(flag)
+        -:   54:                out.write(buf->desc.c_str(), len);
+        -:   55:            if(!out) {
+        -:   56:                flag = false;
+        -:   57:            }
+        -:   58:            
+        -:   59:            len = first->price.length();
+        -:   60:
+        -:   61:            out.write((char*)&len, sizeof(len));
+        -:   62:            if(!out) {
+        -:   63:                flag = false;
+        -:   64:            }
+        -:   65:
+        -:   66:            if(flag)
+        -:   67:                out.write(buf->price.c_str(), len);
+        -:   68:            if(!out) {
+        -:   69:                flag = false;
+        -:   70:            }
+        -:   71:
+        -:   72:            len = buf->category.length();
+        -:   73:
+        -:   74:            out.write((char*)&len, sizeof(len));
+        -:   75:            if(!out) {
+        -:   76:                flag = false;
+        -:   77:            }
+        -:   78:
+        -:   79:            if(flag)
+        -:   80:                out.write(buf->category.c_str(), len);
+        -:   81:            if(!out) {
+        -:   82:                flag = false;
+        -:   83:            }
+        -:   84:
+        -:   85:            buf = buf->next;
+        -:   86:        }
+        -:   87:    } else {
+        -:   88:        cout << "ERROR: open file";
+        -:   89:    }
+        -:   90:}
+        -:   91:
+        -:   92:void lFile(internetStore *&first, internetStore *&last)
+        -:   93:{
+        -:   94:    first = NULL;
+        -:   95:    if(checkFile("storage.txt")) {
+        -:   96:        internetStore *f;
+        -:   97:        bool flag;
+        -:   98:        flag = true;
+        -:   99:        ifstream in("storage.txt");
+        -:  100:        while((!in.eof())&&(flag)) {
+        -:  101:
+        -:  102:            if (f = new internetStore) {
+        -:  103:                int i, len;
+        -:  104:                char chr;
+        -:  105:
+        -:  106:                f->title = "";
+        -:  107:                in.read((char *)&len, sizeof(len));
+        -:  108:
+        -:  109:                if(!in) {
+        -:  110:                    flag = false;
+        -:  111:                }
+        -:  112:
+        -:  113:                if((!in.eof())&&(flag)) {
+        -:  114:                    for(i = 0; i < len; i++) 
+        -:  115:                    {
+        -:  116:                        in.read((char *)&chr, 1);
+        -:  117:                        if(!in) {
+        -:  118:                            flag = false;
+        -:  119:                        } else {
+        -:  120:                            f->title = f->title + chr;
+        -:  121:                        }
+        -:  122:                    }
+        -:  123:                }
+        -:  124:                   
+        -:  125:                f->desc = "";
+        -:  126:                in.read((char *)&len, sizeof(len));
+        -:  127:                if(!in) {
+        -:  128:                    flag = false;
+        -:  129:                } else {
+        -:  130:                    for(i = 0; i < len; i++) {
+        -:  131:                        in.read((char *)&chr, 1);
+        -:  132:                        f->desc = f->desc + chr;
+        -:  133:                    }
+        -:  134:                }
+        -:  135:                
+        -:  136:                f->price = "";
+        -:  137:                in.read((char *)&len, sizeof(len));
+        -:  138:                if(!in) {
+        -:  139:                    flag = false;
+        -:  140:                } else {
+        -:  141:                    for(i = 0; i < len; i++) {
+        -:  142:                        in.read((char *)&chr, 1);
+        -:  143:                        f->price = f->price + chr;
+        -:  144:                    }
+        -:  145:                }
+        -:  146:
+        -:  147:                f->category = "";
+        -:  148:                in.read((char *)&len, sizeof(len));
+        -:  149:                if(!in) {
+        -:  150:                    flag = false;
+        -:  151:                } else {
+        -:  152:                    for(i = 0; i < len; i++) {
+        -:  153:                        in.read((char *)&chr, 1);
+        -:  154:                        f->category = f->category + chr;
+        -:  155:                    }
+        -:  156:                }
+        -:  157:
+        -:  158:                if((!in.eof())&&(flag)) {
+        -:  159:                    if(first == NULL) {
+        -:  160:                        first = f;
+        -:  161:                        last = first;
+        -:  162:                    } else {
+        -:  163:                        last->next = f;
+        -:  164:                        f->prev = last;
+        -:  165:                        last = last->next;
+        -:  166:                    }
+        -:  167:                    f->next = NULL;
+        -:  168:                }
+        -:  169:            } else { 
+        -:  170:                cout << "ERROR: file memory access\n";
+        -:  171:            }
+        -:  172:        }
+        -:  173:        if(!flag) {
+        -:  174:            cout << "ERROR: read file\n";
+        -:  175:        }
+        -:  176:    }
+        -:  177:}
+        -:  178:
+        -:  179:void enterInfo(internetStore *&buff)
+        -:  180:{
+        -:  181:    cout << "Enter product name: ";
+        -:  182:    getline(std::cin, buff->title);
+        -:  183:
+        -:  184:    cout << "Enter product description: ";
+        -:  185:    getline(std::cin, buff->desc);
+        -:  186:    
+        -:  187:    cout << "Enter the price of the product: ";
+        -:  188:    getline(std::cin, buff->price);
+        -:  189:
+        -:  190:    cout << "Enter product category: ";
+        -:  191:    getline(std::cin, buff->category);
+        -:  192:
+        -:  193:}
+        -:  194:
+        -:  195:void addInfo(internetStore *&first, internetStore *&last)
+        -:  196:{
+        -:  197:    internetStore *buf = 0;
+        -:  198:    buf = new internetStore;
+        -:  199:    enterInfo(buf);
+        -:  200:    if(first == NULL) {
+        -:  201:        first = buf;
+        -:  202:        last = first;
+        -:  203:    } else {
+        -:  204:        last->next = buf;
+        -:  205:        buf->prev = last;
+        -:  206:        last = last->next;
+        -:  207:    }
+        -:  208:    sFile(first);
+        -:  209:}
+        -:  210:
+        -:  211:int showInfo(internetStore *&first)
+        -:  212:{
+        -:  213:    internetStore *buf;
+        -:  214:    int records = 0;
+        -:  215:    buf = first;
+        -:  216:    int i = 1;
+        -:  217:    while (buf != NULL) {
+        -:  218:        records++;
+        -:  219:        cout << "[" << i << "] " << "[Product title: " << buf->title << "][Product desc: " << buf->desc << "][Product price:  " << buf->price << "][Product category: " << buf->category << "]";
+        -:  220:        buf = buf->next;
+        -:  221:        i++;
+        -:  222:    }
+        -:  223:    return records;
+        -:  224:}
+        -:  225:
+        -:  226:void deleteInfo(internetStore *&first, internetStore *&last)
+        -:  227:{
+        -:  228:    int records;
+        -:  229:    bool end = false;
+        -:  230:    records = showInfo(first);
+        -:  231:    cout << "["<< records + 1 << "]Exit\n";
+        -:  232:    bool flag;
+        -:  233:    int number = 0;
+        -:  234:    do {
+        -:  235:        cout << "Records number: ";
+        -:  236:        cin >> number;
+        -:  237:        if(!cin) {
+        -:  238:            flag = true;
+        -:  239:            cin.clear();
+        -:  240:            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  241:        } else {
+        -:  242:            if(cin.get() != '\n') {
+        -:  243:                flag = true;
+        -:  244:                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  245:            } else {
+        -:  246:                if(number < 1 || number > records) {
+        -:  247:                    if(number = records = 1) {
+        -:  248:                        end = true;
+        -:  249:                        flag = false;
+        -:  250:                    } else {
+        -:  251:                        flag = true;
+        -:  252:                        cout << "Bad enter!\n";
+        -:  253:                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  254:                    }
+        -:  255:                } else flag = false;
+        -:  256:            }
+        -:  257:        }
+        -:  258:    } while(flag);
+        -:  259:    if(!end) {
+        -:  260:        int i;
+        -:  261:        internetStore *f = first;
+        -:  262:        for(i = 1; i < number; i++) {
+        -:  263:            f = f->next;
+        -:  264:        }
+        -:  265:        if(f->prev != NULL) {
+        -:  266:            f->prev->next = f->next;
+        -:  267:        }
+        -:  268:        if(f->next != NULL) {
+        -:  269:            f->next->prev = f->prev;
+        -:  270:        }
+        -:  271:        if(f == first) {
+        -:  272:            first = f->next;
+        -:  273:        }
+        -:  274:        if(f == last) {
+        -:  275:            last = f->prev;
+        -:  276:        }
+        -:  277:        delete f;
+        -:  278:        sFile(first);
+        -:  279:    }
+        -:  280:}
+        -:  281:
+        -:  282:void editInfo(internetStore *&first)
+        -:  283:{
+        -:  284:    int records;
+        -:  285:    bool end = false;
+        -:  286:    records = showInfo(first);
+        -:  287:    cout << "["<<records + 1 << "]Exit\n";
+        -:  288:    bool flag;
+        -:  289:    int number = 0;
+        -:  290:    do {
+        -:  291:        cout << "Record's number: ";
+        -:  292:        cin >> number;
+        -:  293:        if(!cin) {
+        -:  294:            flag = true;
+        -:  295:            cin.clear();
+        -:  296:            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  297:        } else {
+        -:  298:            if(cin.get() != '\n') {
+        -:  299:                flag = true;
+        -:  300:                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  301:            } else {
+        -:  302:                if(number < 1 || number > records) {
+        -:  303:                    if(number == records + 1) {
+        -:  304:                        end = true;
+        -:  305:                        flag = false;
+        -:  306:                    } else {
+        -:  307:                        flag = true;
+        -:  308:                        cout << "Bad enter!\n";
+        -:  309:                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        -:  310:                    }
+        -:  311:                } else flag = false;
+        -:  312:            }
+        -:  313:        }
+        -:  314:    } while(flag);
+        -:  315:    if(!end) {
+        -:  316:        int i;
+        -:  317:        internetStore *f = first;
+        -:  318:        for(i = 1; i < number; i++) {
+        -:  319:            f = f->next;
+        -:  320:        }
+        -:  321:        enterInfo(f);
+        -:  322:    }
+        -:  323:    sFile(first);
+        -:  324:}*/
+        -:  325:
+        -:  326:
+        2:  327:int main() {
+        2:  328:    internetStore *first = NULL, *last = NULL;
+        2:  329:    lFile(first, last);
+        2:  330:    bool exit = false;
+        2:  331:    last = first;
+       14:  332:    while(not exit) {
+        6:  333:        cout << "\nINTERNET STORE DATABASE\n";
+        6:  334:        cout << "Select action \n";
+        6:  335:        cout << "1) Add new product\n";
+        6:  336:        cout << "2) Show products\n";
+        6:  337:        cout << "3) Edit product\n";
+        6:  338:        cout << "4) Delete product\n";
+        6:  339:        cout << "5) Exit\n";
+        -:  340:        int buf;
+        6:  341:        if((buf = cin.get()) != EOF) {
+        6:  342:            cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
+        6:  343:            if(buf != '\n') {
+        6:  344:                switch(buf) {
+        1:  345:                    case '1': cout << "ADD NEW PRODUCT\n"; addInfo(first, last); break;
+        1:  346:                    case '2': cout << "SHOW PRODUCTS\n"; showInfo(first); break;
+        1:  347:                    case '3': cout << "EDIT PRODUCT\n"; editInfo(first); break;
+        1:  348:                    case '4': cout << "DELETE PRODUCT\n"; deleteInfo(first, last); break;
+        2:  349:                    case '5': cout << "EXIT\n"; exit = true; break;
+    #####:  350:                    default: cout << "ERROR\n"; break;
+        -:  351:                }
+        -:  352:            }
+        -:  353:        }
+        -:  354:    }
+        2:  355:    delete(first);
+        8:  356:}

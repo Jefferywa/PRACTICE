@@ -1,0 +1,31 @@
+        -:    0:Source:func.h
+        -:    0:Programs:3
+        -:    1:#ifndef FILEDB_FUNC_H
+        -:    2:#define FILEDB_FUNC_H
+        -:    3:
+        -:    4:#include <iostream>
+        -:    5:#include <fstream>
+        -:    6:#include <string>
+        -:    7:#include <limits>
+        -:    8:
+        -:    9:#include "files.h"
+        -:   10:
+        4:   11:struct internetStore
+        -:   12:{
+        -:   13:    internetStore *prev;
+        -:   14:    std::string title;
+        -:   15:    std::string desc;
+        -:   16:    std::string price;
+        -:   17:    std::string category;
+        -:   18:    internetStore *next;
+        -:   19:};
+        -:   20:
+        -:   21:void sFile(internetStore *&first);
+        -:   22:void lFile(internetStore *&first, internetStore *&last);
+        -:   23:void enterInfo(internetStore *&buff);
+        -:   24:void addInfo(internetStore *&first, internetStore *&last);
+        -:   25:int showInfo(internetStore *&first);
+        -:   26:void deleteInfo(internetStore *&first, internetStore *&last);
+        -:   27:void editInfo(internetStore *&first);
+        -:   28:
+        -:   29:#endif

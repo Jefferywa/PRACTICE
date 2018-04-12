@@ -1,0 +1,18 @@
+        -:    0:Source:files.cpp
+        -:    0:Programs:3
+        -:    1:#include "files.h"
+        -:    2:
+        -:    3:using namespace std;
+        -:    4:
+        2:    5:bool checkFile(const char* file_name) 
+        -:    6:{
+        4:    7:    ifstream file;
+        2:    8:    file.open(file_name);
+        -:    9:    
+        2:   10:    if(!file) {
+    #####:   11:        return 0;
+        -:   12:    } else {
+        2:   13:        file.close();
+        2:   14:        return 1;
+        -:   15:    }
+        6:   16:}
