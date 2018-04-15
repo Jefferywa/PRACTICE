@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.0//EN"
+"http://www.oasis-open.org/docbook/xml/4.0/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>INTERNET-SHOP "GOODS FOR EXTREME SPORTS".</title>
+
+    <author>
+      <firstname>Голубинов Всволод</firstname>
+    </author>
+
+    <copyright>
+      <year>JefferyWA</year>
+    </copyright>
+  </bookinfo>
+
+  <part>
+    <title>Введение</title>
+
+    <chapter>
+      <title>Описание</title>
+
+      <sect1>
+        <title>Возможности</title>
+
+        <para><orderedlist>
+            <title>Гость (незарегистрированный пользователь):</title>
+
+            <listitem>
+               Регистрация/аутентификация пользователей; 
+            </listitem>
+
+            <listitem>
+               Просмотр товаров на главной странице; 
+            </listitem>
+          </orderedlist> <orderedlist>
+            <title>Зарегестрированый пользователь</title>
+
+            <listitem>
+               Вход в личный кабинет; 
+            </listitem>
+
+            <listitem>
+               Добавление товара в корзину; 
+            </listitem>
+
+            <listitem>
+               Оформление заказа; 
+            </listitem>
+
+            <listitem>
+              <para>Отмена заказа;</para>
+            </listitem>
+
+            <listitem>
+               Редактирование своего профиля (пароль); 
+            </listitem>
+          </orderedlist> <orderedlist>
+            <title>Администратор:</title>
+
+            <listitem>
+               Работа с товарами (Добавление, удаление); 
+            </listitem>
+
+            <listitem>
+               Работа с пользователями (Добавление, удаление); 
+            </listitem>
+
+            <listitem>
+               Работа с заказами (Добавление, удаление); 
+            </listitem>
+          </orderedlist></para>
+      </sect1>
+    </chapter>
+
+    <chapter>
+      <title>Пакет документов</title>
+
+      <para>В данном разделе приводиться список документов, которые описывают
+      интеренет-магазин</para>
+
+      <para><segmentedlist>
+          <title>Таблица 1 – Пакет документов</title>
+
+          <?dbhtml list-presentation="table"?>
+
+          <segtitle>Литера документа</segtitle>
+
+          <segtitle>Файл</segtitle>
+
+          <seglistitem>
+            <seg>ПЗ</seg>
+
+            <seg><ulink url="media/Documentation.pdf">Пояснительная
+            записка</ulink></seg>
+          </seglistitem>
+        </segmentedlist></para>
+    </chapter>
+
+    <chapter>
+      <title>Файловая структура проекта</title>
+
+      <segmentedlist>
+        <title>Таблица 2 – Файловая структура проекта</title>
+
+        <?dbhtml list-presentation="table"?>
+
+        <segtitle>Папка/файл</segtitle>
+
+        <segtitle>Описание</segtitle>
+
+        <seglistitem>
+          <seg>views</seg>
+
+          <seg>Исходники строниц сайта</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes</seg>
+
+          <seg>Исходники серверной части сайта</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>public</seg>
+
+          <seg>Исходники таблиц стилей и скриптов</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>docs</seg>
+
+          <seg>Документы</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>servar.js</seg>
+
+          <seg>Сервер</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>views/index.ejs</seg>
+
+          <seg>Файл главная страница сайта</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>views/signin.ejs</seg>
+
+          <seg>Файл страница автроизации</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>views/signup.ejs</seg>
+
+          <seg>Файл страница регистрации</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>views/lk.ejs</seg>
+
+          <seg>Файл страница личного кабинета пользователя</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>views/cart.ejs</seg>
+
+          <seg>Файл страница корзины</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes/index.js</seg>
+
+          <seg>Файл серверная часть главной страницы</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes/signin.js</seg>
+
+          <seg>Файл серверная часть страницы автроизации</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes/signup.js</seg>
+
+          <seg>Файл серверная часть страницы регистрации</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes/lk.js</seg>
+
+          <seg>Файл серверная часть страницы личного кабинета</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>routes/cart.js</seg>
+
+          <seg>Файл серверная часть страницы корзины</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>public/js/index.js</seg>
+
+          <seg>Файл скрипта главной страинцы</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>public/js/auth.js</seg>
+
+          <seg>Файл скрипта страницы авторизации/регистрации</seg>
+        </seglistitem>
+
+        <seglistitem>
+          <seg>public/css/style.css</seg>
+
+          <seg>Файл таблицы стилей</seg>
+        </seglistitem>
+      </segmentedlist>
+    </chapter>
+  </part>
+
+  <part>
+    <title>Установка</title>
+
+    <chapter>
+      <title>Аппаратная часть</title>
+
+      <para>В этом разделе описаны основные тербования к аппаратной части
+      сервера, на котором будет установлен интернет магазин.</para>
+
+      <para>Сервер должен быть оснащён операционной системой Ubuntu 16.04 и
+      обладать следующими характеристиками: <orderedlist>
+          <title>Аппаратные средства</title>
+
+          <listitem>
+             Процессор: Intel Core 2 Duo; 
+          </listitem>
+
+          <listitem>
+             ОЗУ: 2GB; 
+          </listitem>
+
+          <listitem>
+             HDD: 500GB; 
+          </listitem>
+
+          <listitem>
+             Ethernet 100 MB/s. 
+          </listitem>
+        </orderedlist></para>
+    </chapter>
+
+    <chapter>
+      <title>Программная часть</title>
+
+      <para>В этом разделе описываются программные средства, которые
+      необходимы для корректной работы интернет магазина.</para>
+
+      <para><orderedlist>
+          <title>Программные средства</title>
+
+          <listitem>
+             npm; 
+          </listitem>
+
+          <listitem>
+             СУБД MySQL. 
+          </listitem>
+        </orderedlist></para>
+    </chapter>
+  </part>
+</book>
